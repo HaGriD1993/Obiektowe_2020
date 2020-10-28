@@ -11,7 +11,7 @@ class NPC:
     def info(self):
         return "Witaj nazywam się: " + self.imie, "pracuje jako: "+self.specjanosc
 
-    def zbieranie(self,lista_ziol):
+    def zbieranie(self):
         lista_ziol = []
         ziolo_1 = random.randint(0, 1)
         ziolo_2 = random.randint(0, 1)
