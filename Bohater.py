@@ -20,6 +20,17 @@ class Bohater:
     def obrona(self):
         return random.randint(0, self.pkt_obrony)
 
+    def obrazenia(self, ilosc):
+        self.pkt_zycia -= ilosc
+        if self.pkt_zycia <= 0:
+            print(self.imie, "śmierć na polu bitwy.")
+
+    def zyje(self):
+        if self.pkt_zycia <= 0:
+            return False
+        else:
+            return True
+
     def naprawaEQ(self):
         pancerz = random.randint(0,3)
         print("Poziom pancerza:", pancerz)
@@ -31,16 +42,14 @@ class Bohater:
                 print("Naprawiłem. \nPancerz w doskonałym stanie.")
 
 
-obiekt = Bohater("Numilles", 47, "Mag Bitewny", "Człowiek", 150, 95, 1500)
+obiekt_1 = Bohater("Michał", 47, "Mag Bitewny", "Człowiek", 150, 95, 1500)
 
-print(obiekt.info())
-print(obiekt.naprawaEQ())
+print(obiekt_1.info())
+print(obiekt_1.naprawaEQ())
 
 
 
-# Czy narazie idzie to w dobrym kierunku ?
-#
-# Mysle jeszcze jak rozwiazac problem z ta cala symulacja tej walki.
+
 
 
 
