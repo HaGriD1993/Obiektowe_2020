@@ -1,8 +1,8 @@
 import random
-import time
 
 
-class Bohater:
+
+class Przeciwnik:
     def __init__(self, imie, wiek, specjanosc, rasa, pkt_ataku=0, pkt_obrony=0, pkt_zycia=0):
         self.imie = imie
         self.wiek = wiek
@@ -16,7 +16,7 @@ class Bohater:
         print("Witaj nazywam się: " + self.imie, self.specjanosc)
 
     def atak(self):
-        return random.randint(0, self.pkt_ataku) * (random.randint(2, 3))
+        return random.randint(0, self.pkt_ataku) * (random.randint(0, 2))
 
     def obrona(self):
         return random.randint(0, self.pkt_obrony)
@@ -24,7 +24,7 @@ class Bohater:
     def obrazenia(self, ilosc):
         self.pkt_zycia -= ilosc
         if self.pkt_zycia <= 0:
-            print(self.imie, "śmierć na polu bitwy.")
+            print(self.imie, "umiera na polu bitwy.")
 
     def zyje(self):
         if self.pkt_zycia <= 0:
@@ -32,17 +32,6 @@ class Bohater:
         else:
             return True
 
-    def naprawaeq(self):
-        pancerz = random.randint(0, 3)
-        print("Poziom pancerza:", pancerz)
-        while pancerz < 3:
-            time.sleep(3)
-            pancerz += 1
-            print("Potrzebuje naprawic pancerz. Puk Puk ==> Puk Puk")
-            if pancerz == 3:
-                print("Naprawiłem. \nPancerz w doskonałym stanie.")
+obiekt_2 = Przeciwnik("Lilith", 50, "Matka Sanktuarium", "Demon", 100, 70, 3000)
 
 
-obiekt_1 = Bohater("Michał", 47, "Mag Bitewny", "Człowiek", 150, 95, 1500)
-
-obiekt_1.info()
