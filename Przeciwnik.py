@@ -1,7 +1,5 @@
 import random
 
-
-
 class Przeciwnik:
     def __init__(self, imie, wiek, specjanosc, rasa, pkt_ataku=0, pkt_obrony=0, pkt_zycia=0):
         self.imie = imie
@@ -32,6 +30,6 @@ class Przeciwnik:
         else:
             return True
 
-obiekt_2 = Przeciwnik("Lilith", 50, "Matka Sanktuarium", "Demon", 100, 70, 3000)
+Lilith = Przeciwnik("Lilith", 50, "Matka Sanktuarium", "Demon", 100, 70, 3000)
 
 

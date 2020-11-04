@@ -3,7 +3,7 @@ import time
 
 
 class Alchemik:
-    def __init__(self, imie, wiek, specjanosc,sakwa):
+    def __init__(self, imie, wiek, specjanosc, sakwa):
         self.imie = imie
         self.wiek = wiek
         self.specjanosc = specjanosc
@@ -15,15 +15,18 @@ class Alchemik:
     def zbieranie(self):
         print("Potrzebuje kilku roślin, wybierz gdzie mam się udać: "
               "\n1: Las "
-              "\n2: Bagna")
+              "\n2: Bagna ")
+
         zbieraj = input("Wybierz miejsce ___ : ")
 
         if zbieraj == 1:
             print("Ide do lasu. ")
             time.sleep(6)
+
         elif zbieraj == 2:
             print("Ide na bagna. ")
             time.sleep(10)
+
         lista_ziol = []
         ziolo_1 = random.randint(0, 1)
         ziolo_2 = random.randint(0, 1)
@@ -58,7 +61,9 @@ class Alchemik:
               "\n 1. Lęczące "
               "\n 2. Regeneracyjne "
               "\n 3. Trucizny ")
+
         pokaz_miks = int(input("Wybierz ___ : "))
+
         if pokaz_miks == 1:
             print(miksturki[1], "||||", miksturki[2])
         elif pokaz_miks == 2:
@@ -66,11 +71,13 @@ class Alchemik:
         elif pokaz_miks == 3:
             print(miksturki[5], "||||", miksturki[6])
 
-obiekt_3 = Alchemik ("Bogdan", 73, "Źielarz",[])
 
-print(obiekt_3.info())
-print(obiekt_3.zbieranie())
-print(obiekt_3.mikstury())
+
+Bogdan = Alchemik ("Bogdan", 73, "Źielarz",[])
+
+print(Bogdan.info())
+print(Bogdan.zbieranie())
+print(Bogdan.mikstury())
 
 
 
