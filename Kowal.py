@@ -2,87 +2,92 @@ import random
 import time
 
 class Kowal:
-    def __init__(self, imie, wiek, specjanosc, torba):
-        self.imie = imie
-        self.wiek = wiek
-        self.specjanosc = specjanosc
-        self.torba = torba
+    def __init__(self):
+        self.imie = "Haedrig"
+        self.wiek = 52
+        self.specjanosc = "Kowal"
+        self.torba = []
 
     def info(self):
-        print("Witaj nazywam się: " + self.imie, self.specjanosc)
+        print("Witaj nazywam się: " + self.imie, "jestem", self.specjanosc+"em")
 
     def skladniki(self):
-        print("Z kilku dostepnych składników wykonam dla ciebie:")
-
         metale = ["Stal", "Żelazo", "Miedź", "Brąz", "Nikel", "Złoto"]
         dodatki = ["Drewno", "Węgiel", "Świńska skóra", "Ołów", "Diament"]
 
         wyb_metale = random.sample(metale, k=3)
         wyb_dodatki = random.sample(dodatki, k=2)
-
         self.torba = wyb_dodatki+wyb_metale
-        print(self.torba)
+
+        print("\nMoge ofiarować ci kilka materiałów:")
+        for mineral in self.torba:
+            time.sleep(2)
+            print("Otrzymujesz: ", mineral)
+        time.sleep(5)
+
 
     def przetapianie(self):
-        print("W plecaku jest kikla interesujacych minerałów, \nniektóre z nich moge przetopić na sztabki:")
+        print("\nW plecaku jest kikla interesujacych minerałów, \nniektóre z nich moge przetopić na sztabki:")
+        time.sleep(5)
 
         if "Stal" in self.torba :
-            print("Zabieram stal.")
+            print("\nZabieram stal.")
             self.torba.remove("Stal")
             time.sleep(3)
             sztabka_stali = "Sztabka stali"
             print("Otrzymałeś",sztabka_stali)
             self.torba.append("Stabka stali")
-            print("Stan plecaka: ", self.torba)
+
 
         if "Żelazo" in self.torba :
-            print("Zabieram żelazo.")
+            print("\nZabieram żelazo.")
             self.torba.remove("Żelazo")
             time.sleep(3)
             sztabka_zelaza = "Sztabka żelaza"
             print("Otrzymałeś", sztabka_zelaza)
             self.torba.append("Stabka żelaza")
-            print("Stan plecaka: ", self.torba)
+
 
         if "Miedź" in self.torba :
-            print("Zabieram miedź.")
+            print("\nZabieram miedź.")
             self.torba.remove("Miedź")
             time.sleep(3)
             sztabka_miedzi = "Sztabka miedzi"
             print("Otrzymałeś", sztabka_miedzi)
             self.torba.append("Stabka miedzi")
-            print("Stan plecaka: ", self.torba)
+
 
         if "Brąz" in self.torba :
-            print("Zabieram brąz.")
+            print("\nZabieram brąz.")
             self.torba.remove("Brąz")
             time.sleep(3)
             sztabka_brazu = "Sztabka brązu"
             print("Otrzymałeś", sztabka_brazu)
             self.torba.append("Stabka brązu")
-            print("Stan plecaka: ", self.torba)
+
 
         if "Nikiel" in self.torba :
-            print("Zabieram nikiel.")
+            print("\nZabieram nikiel.")
             self.torba.remove("Nikiel")
             time.sleep(3)
             sztabka_niklu = "Sztabka niklu"
             print("Otrzymałeś", sztabka_niklu)
             self.torba.append("Stabka niklu")
-            print("Stan plecaka: ", self.torba)
+
 
         if "Złoto" in self.torba :
-            print("Zabieram złoto.")
+            print("\nZabieram złoto.")
             self.torba.remove("Złoto")
             time.sleep(3)
             sztabka_zlota = "Sztabka złota"
             print("Otrzymałeś", sztabka_zlota)
             self.torba.append("Stabka złota")
-            print("Stan plecaka: ", self.torba)
+
+        print("Zawartość plecaka: ", self.torba)
+
 
     def kucie(self):
-
-        print("Jako kowal moge wykonać dla ciebie kilka rzeczy.")
+        print("\nJako kowal moge wykonać dla ciebie kilka rzeczy.")
         przedmioty = {
                       1: "Miecz",
                       2: "Pancerz",
@@ -126,7 +131,7 @@ class Kowal:
         print("Wybierz przedmiot który mam wykonac ")
         zrob = int(input(": "))
 
-        print(self.torba,"Zabieram Ci wszystkie składniki.")
+        print(self.torba, "Zabieram Ci wszystkie składniki.")
         self.torba = []
         opoznienie = (3, 5)
 
@@ -178,9 +183,3 @@ class Kowal:
             print("Nic dla ciebie nie zrobie, najwidoczniej nie umiem :D ")
 
 
-
-Ryszard = Kowal("Ryszard", 47, "Kowal",[])
-
-Ryszard.skladniki()
-Ryszard.przetapianie()
-Ryszard.kucie()

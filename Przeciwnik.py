@@ -1,17 +1,17 @@
 import random
 
 class Przeciwnik:
-    def __init__(self, imie, wiek, specjanosc, rasa, pkt_ataku=0, pkt_obrony=0, pkt_zycia=0):
-        self.imie = imie
-        self.wiek = wiek
-        self.specjanosc = specjanosc
-        self.rasa = rasa
-        self.pkt_ataku = pkt_ataku
-        self.pkt_obrony = pkt_obrony
-        self.pkt_zycia = pkt_zycia
+
+    def __init__(self):
+        self.imie = "Lilith - Matka Sanktuarium"
+        self.wiek = 50
+        self.rasa = "Demon"
+        self.pkt_ataku = 80
+        self.pkt_obrony = 70
+        self.pkt_zycia = 3000
 
     def info(self):
-        print("Witaj nazywam się: " + self.imie, self.specjanosc)
+        print("Witaj nazywam się: " + self.imie)
 
     def atak(self):
         return random.randint(0, self.pkt_ataku) * (random.randint(0, 2))
@@ -30,6 +30,6 @@ class Przeciwnik:
         else:
             return True
 
-Lilith = Przeciwnik("Lilith", 50, "Matka Sanktuarium", "Demon", 100, 70, 3000)
+
 
 

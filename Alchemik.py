@@ -3,50 +3,50 @@ import time
 
 
 class Alchemik:
-    def __init__(self, imie, wiek, specjanosc, sakwa):
-        self.imie = imie
-        self.wiek = wiek
-        self.specjanosc = specjanosc
-        self.sakwa = sakwa
+    def __init__(self):
+        self.imie = "Bogdan"
+        self.wiek = 72
+        self.specjanosc = "Zielarz"
+        self.sakwa = []
 
     def info(self):
-        print("Witaj nazywam się: " + self.imie, self.specjanosc)
+        print("Witaj nazywam się:", self.imie, ",jestem", self.specjanosc+"em")
 
     def zbieranie(self):
-        print("Potrzebuje kilku roślin, wybierz gdzie mam się udać: "
+        las_ziola = ["Czerwone źiele", "Niebieski bez", "Korzeń piementu", "Kwiat drugrotu"]
+        bagna_ziola = ["Bagienne źiele", "Kulczyba wronie oko", "Trójkolorowe źiele", "Jaskółcze źiele",
+                       "Ziarna sporyszu"]
+
+        print("Mogę zebrać składniki roslinne, wybierz gdzie mam się udać: "
               "\n1: Las "
               "\n2: Bagna ")
 
-        zbieraj = input("Wybierz miejsce ___ : ")
+        zbieraj = int(input("Wybierz miejsce ___ : "))
 
         if zbieraj == 1:
             print("Ide do lasu. ")
             time.sleep(6)
+            ziolo_1 = random.randint(0, 1)
+            if ziolo_1 == 1:
+                for ziolo in range(5):
+                    wybrane = random.choice(las_ziola)
+                    self.sakwa.append(wybrane)
+                print("Udało mi sie zebrać: ", self.sakwa)
 
-        elif zbieraj == 2:
+            elif ziolo_1 == 0:
+                print("Nie udało mi sie nic znaleść.")
+
+        if zbieraj == 2:
             print("Ide na bagna. ")
+            ziolo_2 = random.randint(0, 1)
             time.sleep(10)
-
-        lista_ziol = []
-        ziolo_1 = random.randint(0, 1)
-        ziolo_2 = random.randint(0, 1)
-
-        if ziolo_1 == 1:
-            lista_ziol.append("Czerwone źiele")
-            lista_ziol.append("Niebieski bez")
-            lista_ziol.append("Korzeń piementu")
-            lista_ziol.append("Kwiat drugrotu")
-            self.sakwa = lista_ziol
-            print("Udało mi sie zebrać następujące rośliny: ", self.sakwa)
-
-        elif ziolo_2 == 1:
-            lista_ziol.append("Bagienne źiele")
-            lista_ziol.append("Kulczyba wronie oko")
-            lista_ziol.append("Trójkolorowe źiele")
-            lista_ziol.append("Jaskółcze źiele")
-            lista_ziol.append("Ziarna sporyszu")
-            self.sakwa = lista_ziol
-            print("Udało mi sie zebrać następujące rośliny: ", self.sakwa)
+            if ziolo_2 == 1:
+                for ziolo in range(5):
+                    wybrane = random.choice(bagna_ziola)
+                    self.sakwa.append(wybrane)
+                print("Udało mi sie zebrać: ", self.sakwa)
+            elif ziolo_2 == 0:
+                print("Nie udało mi sie nic znaleść.")
 
     def mikstury(self):
         miksturki = {1: "Mała mikstura leczenia",
@@ -65,19 +65,38 @@ class Alchemik:
         pokaz_miks = int(input("Wybierz ___ : "))
 
         if pokaz_miks == 1:
-            print(miksturki[1], "||||", miksturki[2])
+            self.sakwa.append(miksturki[1]), self.sakwa.append(miksturki[2])
+            print("Otrzymujesz: ", miksturki[1], ",", miksturki[2])
         elif pokaz_miks == 2:
-            print(miksturki[3], "||||", miksturki[4])
+            self.sakwa.append(miksturki[3]), self.sakwa.append(miksturki[4])
+            print("Otrzymujesz: ", miksturki[3], ",", miksturki[4])
         elif pokaz_miks == 3:
-            print(miksturki[5], "||||", miksturki[6])
+            self.sakwa.append(miksturki[5]), self.sakwa.append(miksturki[6])
+            print("Otrzymujesz: ", miksturki[5], ",", miksturki[6])
+
+    def tranmutacja(self):
+        print("Otrzymujesz: ołów.")
+        self.sakwa.append("ołów")
+        szansa = [1, 2, 3, 4, 5]
+        moja_szansa = random.choice(szansa)
+        print("Moge zamienić ołów w złoto: ", "szansa: ", moja_szansa, "%")
+        wybor = int(input("Zamienic ołów w złoto ?\n1.Tak \n2.Nie\n: "))
+        if wybor == 1:
+            print("Szansa na przemianę:", moja_szansa, "%")
+            ulepszenie = random.randint(0, 1)
+            if ulepszenie == 1:
+                print("Pomyślne ulepszenie, otrzymujesz 'Bryłka złota' ")
+                self.sakwa.append("bryłka złota")
+            elif ulepszenie == 0:
+                print("Zawiodłem, tracisz 'ołów' ")
+                self.sakwa.remove("ołów")
+        else:
+            print("Nie chciałeś zaryzykować.")
 
 
 
-Bogdan = Alchemik ("Bogdan", 73, "Źielarz",[])
 
-print(Bogdan.info())
-print(Bogdan.zbieranie())
-print(Bogdan.mikstury())
+
 
 
 
