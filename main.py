@@ -12,14 +12,12 @@ if __name__ == "__main__":
     alchemik = Alchemik.Alchemik()
     mob = Przeciwnik.Przeciwnik()
 
-
     #Menu:
     while True:
-
-        print("\n1.Bohater:  \tInformacje|| Naprawa ekwipunku|| Polowanie|| Ognisko")
-        print("2.Kowal:     \tInformacje|| Odzysk materiałów|| Rzemiosło")
-        print("3.Alchemik:  \tInformacje|| Rośliny|| Mikstury")
-        print("4.Koniec gry.")
+        print("\n1. Bohater:  \tInformacje|| Naprawa ekwipunku|| Polowanie|| Ognisko")
+        print("2. Kowal:     \tInformacje|| Odzysk materiałów|| Rzemiosło")
+        print("3. Alchemik:  \tInformacje|| Rośliny|| Mikstury")
+        print("4. Koniec gry.")
         wybor_1 = int(input("Wybierz: "))
 
         #Bohater:
@@ -29,7 +27,6 @@ if __name__ == "__main__":
             print("2.Polowanie: (las||bagna)")
             print("3.Gotowanie: ")
             print("4.Przygoda: ")
-            print("5.Plecak: ")
             wybor_2 = int(input("Wybierz: "))
             if wybor_2 == 1:
                 postac.naprawaeq()
@@ -39,8 +36,6 @@ if __name__ == "__main__":
                 postac.gotowanie()
             elif wybor_2 == 4:
                 postac.przygoda()
-            elif wybor_2 == 5:
-                postac.plecak()
                 continue
 
         #Kowal
@@ -76,7 +71,7 @@ if __name__ == "__main__":
 
         #Kuniec:
         if wybor_1 == 4:
-            print("Koniec gry, było miło. d(-_-)b ")
+            print("Koniec gry, było miło. (-(-_-)-) ")
             break
 
 
