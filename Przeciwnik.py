@@ -1,14 +1,13 @@
 import random
 
 class Przeciwnik:
-
     def __init__(self):
         self.imie = "Lilith - Matka Sanktuarium"
         self.wiek = 50
         self.rasa = "Demon"
-        self.pkt_ataku = 80
-        self.pkt_obrony = 70
-        self.pkt_zycia = 3000
+        self.pkt_ataku = 8
+        self.pkt_obrony = 2
+        self.pkt_zycia = 150
 
     def info(self):
         print("Witaj nazywam się: " + self.imie)

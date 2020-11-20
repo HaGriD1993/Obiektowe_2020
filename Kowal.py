@@ -183,3 +183,4 @@ class Kowal:
             print("Nic dla ciebie nie zrobie, najwidoczniej nie umiem :D ")
 
 
+

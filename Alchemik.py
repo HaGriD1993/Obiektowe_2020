@@ -1,7 +1,6 @@
 import random
 import time
 
-
 class Alchemik:
     def __init__(self):
         self.imie = "Bogdan"
@@ -74,7 +73,7 @@ class Alchemik:
             self.sakwa.append(miksturki[5]), self.sakwa.append(miksturki[6])
             print("Otrzymujesz: ", miksturki[5], ",", miksturki[6])
 
-    def tranmutacja(self):
+    def transmutacja(self):
         print("Otrzymujesz: ołów.")
         self.sakwa.append("ołów")
         szansa = [1, 2, 3, 4, 5]

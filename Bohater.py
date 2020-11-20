@@ -1,11 +1,10 @@
 import random
 import time
 
-class Bohater:
 
+class Bohater:
     def __init__(self, imie):
         self.imie = imie
-        self.wiek = 27
         self.specjanosc = "Wojownik"
         self.rasa = "człowiek"
         self.plecak = []
@@ -13,15 +12,11 @@ class Bohater:
         self.pkt_obrony = 3
         self.pkt_zycia = 100
 
-
     def info(self):
-        print("Nazywam się: " + self.imie+".", "Jestem", self.specjanosc+"iem,", "mam lat: ", self.wiek)
+        print(self.imie+".", self.specjanosc)
         print("Punkty ataku:", self.pkt_ataku,
               "\nPunkty obrony:", self.pkt_obrony,
               "\nPunkty życia:", self.pkt_zycia)
-
-    def plecak(self):
-        print(self.plecak)
 
     def naprawaeq(self):
         pancerz = random.randint(0, 3)
@@ -118,7 +113,8 @@ class Bohater:
 
 
     def przygoda(self):
-        print("Opuszczasz miasto, wybierz gdzie sie udasz: \n1.Las \n2.Bagna")
+        print("Opuszczasz miasto, wybierz gdzie sie udasz: \n1.Las \n2.Bagna \n3.Pustynia")
+
         wybor = int(input(":"))
 
         if wybor == 1:
@@ -169,7 +165,26 @@ class Bohater:
             else:
                 print("Bielik cię zabił,")
 
+        if wybor == 3:
+            print("Atakuje skorpiona: ")
+            skorpion_zycie = random.randint(30, 50)
 
+            while skorpion_zycie > 0 and self.pkt_zycia > 0:
+                skorpion_atak = random.randrange(2, 12, 2)
+                self.pkt_ataku = random.randint(1, 10)
+                self.pkt_obrony = random.randint(1, 3)
+                skorpion_zycie -= self.pkt_ataku
+                print("Bohater: ", self.pkt_zycia, "życia.", "\nBohater atakuje: ", self.pkt_ataku)
+                time.sleep(2)
+                print("Bielik: ", skorpion_zycie, "zycia.", "\nBielik atakuje: ", skorpion_atak)
+                print("Bohater blokuje tarcza: ", self.pkt_obrony)
+                self.pkt_zycia -= skorpion_atak - self.pkt_obrony
+                time.sleep(2)
+
+            if skorpion_zycie <= 0:
+                print("Zabiłeś skorpiona")
+                self.plecak.extend(["ogon skorpiona", "szpony skorpiona", "oczy skorpiona"])
+                print("Otrzymujesz: ", self.plecak)
 
 
 

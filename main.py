@@ -2,7 +2,7 @@ import Bohater
 import Przeciwnik
 import Alchemik
 import Kowal
-
+import Wyprawa
 
 if __name__ == "__main__":
 
@@ -14,9 +14,9 @@ if __name__ == "__main__":
 
     #Menu:
     while True:
-        print("\n1. Bohater:  \tInformacje|| Naprawa ekwipunku|| Polowanie|| Ognisko")
-        print("2. Kowal:     \tInformacje|| Odzysk materiałów|| Rzemiosło")
-        print("3. Alchemik:  \tInformacje|| Rośliny|| Mikstury")
+        print("\n1. Bohater:      Informacje|| Naprawa ekwipunku|| Polowanie|| Ognisko")
+        print("2. Kowal:          Informacje|| Odzysk materiałów|| Rzemiosło")
+        print("3. Alchemik:       Informacje|| Rośliny|| Mikstury")
         print("4. Koniec gry.")
         wybor_1 = int(input("Wybierz: "))
 
@@ -36,7 +36,9 @@ if __name__ == "__main__":
                 postac.gotowanie()
             elif wybor_2 == 4:
                 postac.przygoda()
-                continue
+            elif wybor_2 == 5:
+                postac.plecak()
+                break
 
         #Kowal
         if wybor_1 == 2:
@@ -66,7 +68,7 @@ if __name__ == "__main__":
             elif wybor_2 == 2:
                 alchemik.mikstury()
             elif wybor_2 == 3:
-                alchemik.tranmutacja()
+                alchemik.transmutacja()
                 continue
 
         #Kuniec:
