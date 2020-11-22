@@ -5,8 +5,8 @@ import Kowal
 import Wyprawa
 
 if __name__ == "__main__":
-
-    imie = input("Podaj imie bohatera: ")
+    print("Witaj w grze. Na początku podaj imie dla twojego bohatera: ")
+    imie = input("\nImie bohatera: ")
     postac = Bohater.Bohater(imie)
     kowal = Kowal.Kowal()
     alchemik = Alchemik.Alchemik()
@@ -27,6 +27,7 @@ if __name__ == "__main__":
             print("2.Polowanie: (las||bagna)")
             print("3.Gotowanie: ")
             print("4.Przygoda: ")
+
             wybor_2 = int(input("Wybierz: "))
             if wybor_2 == 1:
                 postac.naprawaeq()
@@ -35,10 +36,8 @@ if __name__ == "__main__":
             elif wybor_2 == 3:
                 postac.gotowanie()
             elif wybor_2 == 4:
-                postac.przygoda()
-            elif wybor_2 == 5:
-                postac.plecak()
-                break
+                Wyprawa.wyprawa(postac)
+                continue
 
         #Kowal
         if wybor_1 == 2:

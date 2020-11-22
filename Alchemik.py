@@ -1,5 +1,6 @@
 import random
 import time
+#import Bohater
 
 class Alchemik:
     def __init__(self):
@@ -12,6 +13,7 @@ class Alchemik:
         print("Witaj nazywam się:", self.imie, ",jestem", self.specjanosc+"em")
 
     def zbieranie(self):
+        #mojbohater: Bohater.Bohater
         las_ziola = ["Czerwone źiele", "Niebieski bez", "Korzeń piementu", "Kwiat drugrotu"]
         bagna_ziola = ["Bagienne źiele", "Kulczyba wronie oko", "Trójkolorowe źiele", "Jaskółcze źiele",
                        "Ziarna sporyszu"]
@@ -30,8 +32,8 @@ class Alchemik:
                 for ziolo in range(5):
                     wybrane = random.choice(las_ziola)
                     self.sakwa.append(wybrane)
+                    #mojbohater.plecak.extend(wybrane)
                 print("Udało mi sie zebrać: ", self.sakwa)
-
             elif ziolo_1 == 0:
                 print("Nie udało mi sie nic znaleść.")
 
