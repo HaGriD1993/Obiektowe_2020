@@ -37,12 +37,14 @@ class Przeciwnik:
             time.sleep(2)
 
         if self.pkt_zycia <= 0:
-            print("Zabiłeś dzika")
-            mojbohater.plecak.extend(["Korona Lilith, "])
-            print("Otrzymujesz: ", mojbohater.plecak)
+            print("Zabiłeś Lilith")
+            nagroda = mojbohater.plecak.extend(["Korona Lilith, bryłka złota"])
+            print("Otrzymujesz: ", nagroda)
+            mojbohater.stan_pancerz = 1
+            mojbohater.stan_bron = 1
 
         else:
-            print("Dzik cie zabił,")
+            print("Poległeś w walce ")
 
 
 
