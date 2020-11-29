@@ -29,11 +29,14 @@ def wyprawa(mojbohater: Bohater.Bohater):                   #zmienna mojbohater 
 
             if dzik_zycie <= 0:
                 print("Zabiłeś dzika")
+                brylka = random.randint(0, 2)
+                if brylka == 1:
+                    mojbohater.plecak.extend("bryłka złota")
                 mojbohater.plecak.extend(["skóra dzika", "kieł dzika"])
                 print("Otrzymujesz: ", mojbohater.plecak)
 
             else:
-                print("Dzik cie zabił,")
+                print("Dzik cie zabił")
 
         if wybor == 2:
             print("Atakuje bielika: ")
@@ -55,11 +58,14 @@ def wyprawa(mojbohater: Bohater.Bohater):                   #zmienna mojbohater 
 
             if bielik_zycie <= 0:
                 print("Zabiłeś bielika")
+                brylka = random.randint(0, 2)
+                if brylka == 1:
+                    mojbohater.plecak.extend("bryłka złota")
                 mojbohater.plecak.extend(["pióra bielika", "szpony bielika"])
                 print("Otrzymujesz: ", mojbohater.plecak)
 
             else:
-                print("Bielik cię zabił,")
+                print("Bielik cię zabił")
 
         if wybor == 3:
             print("Atakuje skorpiona: ")
@@ -81,6 +87,11 @@ def wyprawa(mojbohater: Bohater.Bohater):                   #zmienna mojbohater 
 
             if skorpion_zycie <= 0:
                 print("Zabiłeś skorpiona")
+                brylka = random.randint(0, 2)
+                if brylka == 1:
+                    mojbohater.plecak.extend("bryłka złota")
                 mojbohater.plecak.extend(["ogon skorpiona", "szpony skorpiona", "oczy skorpiona"])
                 print("Otrzymujesz: ", mojbohater.plecak)
 
+            else:
+                print("Skorpion cię zabił")

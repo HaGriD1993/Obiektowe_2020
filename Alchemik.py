@@ -1,6 +1,6 @@
 import random
 import time
-#import Bohater
+import Bohater
 
 class Alchemik:
     def __init__(self):
@@ -12,8 +12,7 @@ class Alchemik:
     def info(self):
         print("Witaj nazywam się:", self.imie, ",jestem", self.specjanosc+"em")
 
-    def zbieranie(self):
-        #mojbohater: Bohater.Bohater
+    def zbieranie(self, mojapostac: Bohater.Bohater):
         las_ziola = ["Czerwone źiele", "Niebieski bez", "Korzeń piementu", "Kwiat drugrotu"]
         bagna_ziola = ["Bagienne źiele", "Kulczyba wronie oko", "Trójkolorowe źiele", "Jaskółcze źiele",
                        "Ziarna sporyszu"]
@@ -31,9 +30,9 @@ class Alchemik:
             if ziolo_1 == 1:
                 for ziolo in range(5):
                     wybrane = random.choice(las_ziola)
-                    self.sakwa.append(wybrane)
-                    #mojbohater.plecak.extend(wybrane)
-                print("Udało mi sie zebrać: ", self.sakwa)
+                    mojapostac.plecak.append(wybrane)
+                    print("Zebrałem: ", wybrane)
+                    time.sleep(1)
             elif ziolo_1 == 0:
                 print("Nie udało mi sie nic znaleść.")
 
@@ -44,12 +43,13 @@ class Alchemik:
             if ziolo_2 == 1:
                 for ziolo in range(5):
                     wybrane = random.choice(bagna_ziola)
-                    self.sakwa.append(wybrane)
-                print("Udało mi sie zebrać: ", self.sakwa)
+                    mojapostac.plecak.append(wybrane)
+                    print("Zebrałem: ", wybrane)
+                    time.sleep(1)
             elif ziolo_2 == 0:
                 print("Nie udało mi sie nic znaleść.")
 
-    def mikstury(self):
+    def mikstury(self, mojapostac: Bohater.Bohater):
         miksturki = {1: "Mała mikstura leczenia",
                      2: "Duża mikstura leczenia",
                      3: "Mikstura 'Powrót do korzeni'",
@@ -66,18 +66,18 @@ class Alchemik:
         pokaz_miks = int(input("Wybierz ___ : "))
 
         if pokaz_miks == 1:
-            self.sakwa.append(miksturki[1]), self.sakwa.append(miksturki[2])
+            mojapostac.plecak.append(miksturki[1]), mojapostac.plecak.append(miksturki[2])
             print("Otrzymujesz: ", miksturki[1], ",", miksturki[2])
         elif pokaz_miks == 2:
-            self.sakwa.append(miksturki[3]), self.sakwa.append(miksturki[4])
+            mojapostac.plecak.append(miksturki[3]), mojapostac.plecak.append(miksturki[4])
             print("Otrzymujesz: ", miksturki[3], ",", miksturki[4])
         elif pokaz_miks == 3:
-            self.sakwa.append(miksturki[5]), self.sakwa.append(miksturki[6])
+            mojapostac.plecak.append(miksturki[5]), mojapostac.plecak.append(miksturki[6])
             print("Otrzymujesz: ", miksturki[5], ",", miksturki[6])
 
-    def transmutacja(self):
+    def transmutacja(self, mojapostac: Bohater.Bohater):
         print("Otrzymujesz: ołów.")
-        self.sakwa.append("ołów")
+        mojapostac.plecak.append("ołów")
         szansa = [1, 2, 3, 4, 5]
         moja_szansa = random.choice(szansa)
         print("Moge zamienić ołów w złoto: ", "szansa: ", moja_szansa, "%")
@@ -87,10 +87,10 @@ class Alchemik:
             ulepszenie = random.randint(0, 1)
             if ulepszenie == 1:
                 print("Pomyślne ulepszenie, otrzymujesz 'Bryłka złota' ")
-                self.sakwa.append("bryłka złota")
+                mojapostac.plecak.append("bryłka złota")
             elif ulepszenie == 0:
                 print("Zawiodłem, tracisz 'ołów' ")
-                self.sakwa.remove("ołów")
+                mojapostac.plecak.remove("ołów")
         else:
             print("Nie chciałeś zaryzykować.")
 

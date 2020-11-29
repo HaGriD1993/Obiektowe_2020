@@ -1,186 +1,161 @@
 import random
 import time
+import Bohater
 
-class Kowal:
+
+class Kowal():
     def __init__(self):
-        self.imie = "Haedrig"
+        self.imie = "Darek"
         self.wiek = 52
         self.specjanosc = "Kowal"
-        self.torba = []
 
     def info(self):
-        print("Witaj nazywam się: " + self.imie, "jestem", self.specjanosc+"em")
+        print("Witaj nazywam się: " + self.imie, "jestem", self.specjanosc+"em")        #PRZEDSTAWIA SIE
 
-    def skladniki(self):
-        metale = ["Stal", "Żelazo", "Miedź", "Brąz", "Nikel", "Złoto"]
+    def skladniki(self, mojbohater: Bohater.Bohater):
+        metale = ["Stal", "Żelazo", "Miedź", "Brąz", "Nikiel", "Złoto"]
         dodatki = ["Drewno", "Węgiel", "Świńska skóra", "Ołów", "Diament"]
 
-        wyb_metale = random.sample(metale, k=3)
-        wyb_dodatki = random.sample(dodatki, k=2)
-        self.torba = wyb_dodatki+wyb_metale
+        wyb_metale = random.sample(metale, k=3)                                         #RANDOMOWE ELEMENTY Z LISTY
+        wyb_dodatki = random.sample(dodatki, k=2)                                       #RANDOMOWE ELEMENTY Z LISTY
 
-        print("\nMoge ofiarować ci kilka materiałów:")
-        for mineral in self.torba:
-            time.sleep(2)
-            print("Otrzymujesz: ", mineral)
-        time.sleep(5)
+        if 'bryłka złota' in mojbohater.plecak:                                         #SPRAWDZA CZY MA BRYŁKE W PLECAKU
+            wybor = input("Za 'bryłke złota' mogę ofiarować ci kilka metali. (T/N): ")
+            if wybor == str("T"):
+                print("Za bryłke otrzymujesz: ")
+                mojbohater.plecak.remove("bryłka złota")                                #USUWA BRYŁKE Z PLECAKA
+                print(wyb_metale)
+                mojbohater.plecak.extend(wyb_metale)                                    #DODAJE DO PLECAKA Z LISTY METALI
+                time.sleep(2)
+                print("Dostajesz również: ", wyb_dodatki)
+                mojbohater.plecak.extend(wyb_dodatki)                                   #DODAJE DO PLECAKA Z LISTY DODATKÓW
 
+            if wybor == str("N"):
+                print("Wróć jak zmienisz zdanie.")
+        else:
+            print("Nie masz 'bryłki złota'. Wróć jak znajdziesz.")                      #JAK NIE MA BRYŁKI TO KONIEC
 
-    def przetapianie(self):
-        print("\nW plecaku jest kikla interesujacych minerałów, \nniektóre z nich moge przetopić na sztabki:")
-        time.sleep(5)
+    def przetapianie(self, mojbohater: Bohater.Bohater):
+        wybor = input("Za 'bryłke złota' mogę przetopię metal w sztabke.(T/N): ")
+        metale_lista = ["Stal", "Żelazo", "Miedź", "Brąz", "Nikiel", "Złoto"]
+        if wybor == str("T"):
 
-        if "Stal" in self.torba :
-            print("\nZabieram stal.")
-            self.torba.remove("Stal")
-            time.sleep(3)
-            sztabka_stali = "Sztabka stali"
-            print("Otrzymałeś",sztabka_stali)
-            self.torba.append("Stabka stali")
-
-
-        if "Żelazo" in self.torba :
-            print("\nZabieram żelazo.")
-            self.torba.remove("Żelazo")
-            time.sleep(3)
-            sztabka_zelaza = "Sztabka żelaza"
-            print("Otrzymałeś", sztabka_zelaza)
-            self.torba.append("Stabka żelaza")
-
-
-        if "Miedź" in self.torba :
-            print("\nZabieram miedź.")
-            self.torba.remove("Miedź")
-            time.sleep(3)
-            sztabka_miedzi = "Sztabka miedzi"
-            print("Otrzymałeś", sztabka_miedzi)
-            self.torba.append("Stabka miedzi")
+            for metal in metale_lista:                                      #SPRAWDZA CZY Z ELEMENTY Z LISTY METALI SA W PLECAKU
+                if metal in mojbohater.plecak:
+                    print("Ten metal moge przetopić: ", metal)
+                    wybor_metal = input("Czy przetopic: (T/N): ")
+                    if wybor_metal == str("T"):
+                        mojbohater.plecak.remove(metal)                             #USUWA METAL Z PLECAKA, DODAJE SZTABKE
+                        mojbohater.plecak.append(str("sztabka ") + metal)
+                    else:
+                        print("Może poźniej.")
+            else:
+                print("Nie masz nic do przetopienia.")
 
 
-        if "Brąz" in self.torba :
-            print("\nZabieram brąz.")
-            self.torba.remove("Brąz")
-            time.sleep(3)
-            sztabka_brazu = "Sztabka brązu"
-            print("Otrzymałeś", sztabka_brazu)
-            self.torba.append("Stabka brązu")
+    def handel(self, mojbohater: Bohater.Bohater):
+        print("Moge sprzedać ci kilka rzeczy: \nCena to 'bryłka złota.'")
 
-
-        if "Nikiel" in self.torba :
-            print("\nZabieram nikiel.")
-            self.torba.remove("Nikiel")
-            time.sleep(3)
-            sztabka_niklu = "Sztabka niklu"
-            print("Otrzymałeś", sztabka_niklu)
-            self.torba.append("Stabka niklu")
-
-
-        if "Złoto" in self.torba :
-            print("\nZabieram złoto.")
-            self.torba.remove("Złoto")
-            time.sleep(3)
-            sztabka_zlota = "Sztabka złota"
-            print("Otrzymałeś", sztabka_zlota)
-            self.torba.append("Stabka złota")
-
-        print("Zawartość plecaka: ", self.torba)
-
-
-    def kucie(self):
-        print("\nJako kowal moge wykonać dla ciebie kilka rzeczy.")
         przedmioty = {
-                      1: "Miecz",
-                      2: "Pancerz",
-                      3: "Naramienniki",
-                      4: "Hełm",
-                      5: "Tarcza"
-                      }
+            1: "Miecz",
+            2: "Pancerz",
+            3: "Naramienniki",
+            4: "Hełm",
+            5: "Tarcza",
+            6: "Inne"
+        }
 
         miecze = {
-                  1: "Zwykły miecz",
-                  2: "Doskonały miecz",
-                  3: "Zardzewiały miecz"
-                  }
+            1: "Zwykły miecz",
+            2: "Doskonały miecz",
+            3: "Zardzewiały miecz"
+        }
 
         pancerz = {
-                   1: "Pancerz sierzanta",
-                   2: "Pancerz strażnika",
-                   3: "Pancerz oficera"
-                   }
-
+            1: "Pancerz sierzanta",
+            2: "Pancerz strażnika",
+            3: "Pancerz oficera"
+        }
 
         naramienniki = {
-                        1: "Zwykłe naramienniki",
-                        2: "Stalowe naramienniki",
-                        3: "Żelazne naramienniki"
-                        }
+            1: "Zwykłe naramienniki",
+            2: "Stalowe naramienniki",
+            3: "Żelazne naramienniki"
+        }
 
         helm = {
-                1: "Skórzany hełm",
-                2: "Stalowy hełm",
-                3: "Miedziany hełm"
-                }
+            1: "Skórzany hełm",
+            2: "Stalowy hełm",
+            3: "Miedziany hełm"
+        }
 
         tarcze = {
-                  1: "Stalowa tarcza",
-                  2: "Złota tarcza",
-                  3: "Miedziana tarcza"
-                 }
+            1: "Stalowa tarcza",
+            2: "Złota tarcza",
+            3: "Miedziana tarcza"
+        }
+        inne = {
+            1: "osełka",
+            2: "młotek kowalski",
+            3: "kilof",
+            4: ""
+        }
 
-        print(przedmioty)
-        print("Wybierz przedmiot który mam wykonac ")
-        zrob = int(input(": "))
+        if 'bryłka złota' in mojbohater.plecak:                 #SPRAWDZA CZY MA BRYŁKE
+            print("Tyle masz bryłek: ", mojbohater.plecak.count("bryłka złota"))
+            time.sleep(2)
+            print("\n", przedmioty)
+            wybor = int(input("Wybierz: "))                          #WYBIERA KATEGORIE
 
-        print(self.torba, "Zabieram Ci wszystkie składniki.")
-        self.torba = []
-        opoznienie = (3, 5)
+            if wybor == 1:
+                print(miecze)
+                x = int(input("Który chcesz kupic: "))
+                if x in miecze:
+                    mojbohater.plecak.append(miecze.get(x))         # (X) JAKO KLUCZ ZE SLOWNIKA, DO PLECAKA DODAJE WARTOSC
+                    mojbohater.plecak.remove('bryłka złota')
 
-        if zrob == 1:
-            print("Wykonałem dla ciebie: ")
-            print("Puk puk , Puk puk")
-            czas = random.choice(opoznienie)
-            time.sleep(czas)
-            mieczyk = random.choice(list(miecze.values()))
-            self.torba.append(mieczyk)
-            print("Otrzymujesz:", self.torba)
+            if wybor == 2:
+                print(pancerz)
+                x = int(input("Który chcesz kupic: "))
+                if x in pancerz:
+                    mojbohater.plecak.append(pancerz.get(x))
+                    mojbohater.plecak.remove('bryłka złota')
 
-        elif zrob == 2:
-            print("Wykonałem dla ciebie: ")
-            print("Puk puk , Puk puk")
-            czas = random.choice(opoznienie)
-            time.sleep(czas)
-            klata = random.choice(list(pancerz.values()))
-            self.torba.append(klata)
-            print("Otrzymujesz:", self.torba)
+            if wybor == 3:
+                print(naramienniki)
+                x = int(input("Który chcesz kupic: "))
+                if x in naramienniki:
+                    mojbohater.plecak.append(naramienniki.get(x))
+                    mojbohater.plecak.remove('bryłka złota')
 
-        elif zrob == 3:
-            print("Wykonałem dla ciebie: ")
-            print("Puk puk , Puk puk")
-            czas = random.choice(opoznienie)
-            time.sleep(czas)
-            ramiona = random.choice(list(naramienniki.values()))
-            self.torba.append(ramiona)
-            print("Otrzymujesz:", self.torba)
+            if wybor == 4:
+                print(helm)
+                x = int(input("Który chcesz kupic: "))
+                if x in helm:
+                    mojbohater.plecak.append(helm.get(x))
+                    mojbohater.plecak.remove('bryłka złota')
 
-        elif zrob == 4:
-            print("Wykonałem dla ciebie: ")
-            print("Puk puk , Puk puk")
-            czas = random.choice(opoznienie)
-            time.sleep(czas)
-            glowa = random.choice(list(helm.values()))
-            self.torba.append(glowa)
-            print("Otrzymujesz:", self.torba)
+            if wybor == 5:
+                print(tarcze)
+                x = int(input("Który chcesz kupic: "))
+                if x in tarcze:
+                    mojbohater.plecak.append(tarcze.get(x))
+                    mojbohater.plecak.remove('bryłka złota')
 
-        elif zrob == 5:
-            print("Wykonałem dla ciebie: ")
-            print("Puk puk , Puk puk")
-            czas = random.choice(opoznienie)
-            time.sleep(czas)
-            dykta = random.choice(list(tarcze.values()))
-            self.torba.append(dykta)
-            print("Otrzymujesz:", self.torba)
+            if wybor == 6:
+                print(inne)
+                x = int(input("Który chcesz kupic: "))
+                if x in inne:
+                    mojbohater.plecak.append(inne.get(x))
+                    mojbohater.plecak.remove('bryłka złota')
         else:
-            print("Nic dla ciebie nie zrobie, najwidoczniej nie umiem :D ")
+            print("Nie masz: 'bryłek złota'")
+
+
+
+
+
+
 
 
 

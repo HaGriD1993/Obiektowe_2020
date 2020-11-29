@@ -1,4 +1,6 @@
 import random
+import Bohater
+import time
 
 class Przeciwnik:
     def __init__(self):
@@ -12,22 +14,37 @@ class Przeciwnik:
     def info(self):
         print("Witaj nazywam się: " + self.imie)
 
-    def atak(self):
-        return random.randint(0, self.pkt_ataku) * (random.randint(0, 2))
+    def walka(self, mojbohater: Bohater.Bohater):
+        print("Zbliżasz sie Sanktuarium, możesz sie jeszcze wycofac. \nWybierz 1. aby wejść do srodka i zmierzycz sie z 'Lilith'.")
 
-    def obrona(self):
-        return random.randint(0, self.pkt_obrony)
+        wybor = int(input(":"))
 
-    def obrazenia(self, ilosc):
-        self.pkt_zycia -= ilosc
+        if wybor == 1:
+            print("Atakuje Lilith: ")
+
+        while self.pkt_zycia > 0 and mojbohater.pkt_zycia > 0:
+            self.pkt_ataku = random.randrange(1, 10, 2)
+            mojbohater.pkt_ataku = random.randint(1, 10)
+            mojbohater.pkt_obrony = random.randint(1, 3)
+            self.pkt_zycia -= mojbohater.pkt_ataku
+            print("###" * 10)
+            print("Bohater: ", mojbohater.pkt_zycia, "życia.", "\nBohater atakuje: ", mojbohater.pkt_ataku)
+            time.sleep(2)
+            print("Lilith: ", self.pkt_zycia, "punkty życia.", "\nLilith atakuje: ", self.pkt_ataku)
+            time.sleep(2)
+            print("Bohater blokuje tarcza: ", mojbohater.pkt_obrony)
+            mojbohater.pkt_zycia -= self.pkt_ataku - mojbohater.pkt_obrony
+            time.sleep(2)
+
         if self.pkt_zycia <= 0:
-            print(self.imie, "umiera na polu bitwy.")
+            print("Zabiłeś dzika")
+            mojbohater.plecak.extend(["Korona Lilith, "])
+            print("Otrzymujesz: ", mojbohater.plecak)
 
-    def zyje(self):
-        if self.pkt_zycia <= 0:
-            return False
         else:
-            return True
+            print("Dzik cie zabił,")
+
+
 
 
 
