@@ -1,16 +1,16 @@
 import Bohater
 import random
 import time
+#import Przedmiot
 
-
-def wyprawa(mojbohater: Bohater.Bohater):                   #zmienna mojbohater z pliku:Bohater, klasa:Bohater
+def wyprawa(mojbohater: Bohater.Bohater):
         print("Opuszczasz miasto, wybierz gdzie sie udasz: \n1.Las \n2.Bagna \n3.Pustynia")
 
         wybor = int(input(":"))
 
         if wybor == 1:
             print("Atakuje dzika: ")
-            dzik_zycie = random.randint(30, 50)
+            dzik_zycie = random.randint(1, 3)
 
             while dzik_zycie > 0 and mojbohater.pkt_zycia > 0:
                 dzik_atak = random.randrange(1, 10, 2)
@@ -26,14 +26,16 @@ def wyprawa(mojbohater: Bohater.Bohater):                   #zmienna mojbohater 
                 mojbohater.pkt_zycia -= dzik_atak - mojbohater.pkt_obrony
                 time.sleep(2)
 
-
             if dzik_zycie <= 0:
                 print("Zabiłeś dzika")
                 brylka = random.randint(0, 2)
                 if brylka == 1:
-                    mojbohater.plecak.extend("bryłka złota")
-                mojbohater.plecak.extend(["skóra dzika", "kieł dzika"])
-                print("Otrzymujesz: ", mojbohater.plecak)
+                    mojbohater.plecak.append("bryłka złota")
+                mojbohater.plecak.append("skóra dzika")
+                mojbohater.plecak.append("kieł dzika")
+                mojbohater.plecak.append("młotek kowalski")
+                #nagroda = Przedmiot.Test("młotek kowaslki")
+                #mojbohater.dodajplecak(nagroda)
 
             else:
                 print("Dzik cie zabił")
@@ -60,9 +62,9 @@ def wyprawa(mojbohater: Bohater.Bohater):                   #zmienna mojbohater 
                 print("Zabiłeś bielika")
                 brylka = random.randint(0, 2)
                 if brylka == 1:
-                    mojbohater.plecak.extend("bryłka złota")
-                mojbohater.plecak.extend(["pióra bielika", "szpony bielika"])
-                print("Otrzymujesz: ", mojbohater.plecak)
+                    mojbohater.plecak.append("bryłka złota")
+                mojbohater.plecak.append("pióro bielika")
+                mojbohater.plecak.append("szpon bielika")
 
             else:
                 print("Bielik cię zabił")
@@ -89,9 +91,10 @@ def wyprawa(mojbohater: Bohater.Bohater):                   #zmienna mojbohater 
                 print("Zabiłeś skorpiona")
                 brylka = random.randint(0, 2)
                 if brylka == 1:
-                    mojbohater.plecak.extend("bryłka złota")
-                mojbohater.plecak.extend(["ogon skorpiona", "szpony skorpiona", "oczy skorpiona"])
-                print("Otrzymujesz: ", mojbohater.plecak)
+                    mojbohater.plecak.append("bryłka złota")
+                mojbohater.plecak.append("ogon skorpiona")
+                mojbohater.plecak.append("szpon skorpiona")
+                mojbohater.plecak.append("oczy skorpiona")
 
             else:
                 print("Skorpion cię zabił")

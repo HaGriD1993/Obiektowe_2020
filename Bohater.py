@@ -1,25 +1,26 @@
 import random
 import time
+import Przedmiot
 
 
 class Bohater:
-    def __init__(self, imie):
+    def __init__(self, imie, specjalnosc, plecak, pkt_ataku, pkt_obrony, pkt_zycia):
         self.imie = imie
-        self.specjanosc = "Wojownik"
-        self.plecak = []                          #DLA TESTOW MOZNA DODAC BRYŁKE NA START
-        self.pkt_ataku = 10
-        self.pkt_obrony = 3
-        self.pkt_zycia = 90
-        self.stan_pancerz = random.randint(0, 5)                        # DOWOLNY POZIOM PANCERZA I BRONI
-        self.stan_bron = random.randint(0, 5)
+        self.specjalnosc = specjalnosc
+        self.plecak = plecak
+        self.pkt_ataku = pkt_ataku
+        self.pkt_obrony = pkt_obrony
+        self.pkt_zycia = pkt_zycia
+        self.stan_pancerz = 0
+        self.stan_bron = 0
 
     def info(self):
         print("#######"*5)
-        print("Imie:", self.imie, "\tKlasa:", self.specjanosc)
+        print("Imie:", self.imie, "\tKlasa:", self.specjalnosc)
         print("Punkty życia:", self.pkt_zycia, "/ 100",
               "\nStan pancerza:", self.stan_pancerz, "/ 5",
               "\nStan broni: ", self.stan_bron, "/ 5",
-              "\nilość bryłek", self.plecak.count('bryłka złota'))
+              "\nilość bryłek: ", self.plecak.count('bryłka złota'))
         print("#######" * 5)
 
     def pokazplecak(self):
@@ -29,12 +30,15 @@ class Bohater:
         print("#######" * 5)
         pass
 
+    def dodajplecak(self, rzecz: Przedmiot.Przedmiot):
+        self.plecak.append(rzecz)
+
     def naprawaeq(self):
         print("Przed walka musze sprawdzic stan swojego oręża:",
               "\npancerz:", self.stan_pancerz, "|| broń:", self.stan_bron)
         print("#######" * 5)
 
-        if self.stan_bron and self.stan_pancerz == 5:               #SPRAWDZAM STAN BRONI I PANCERZA
+        if self.stan_bron and self.stan_pancerz >= 5:               #SPRAWDZAM STAN BRONI I PANCERZA
             print("Ekwipunek w doskonałym stanie.")
         elif self.stan_bron < 5 or self.stan_pancerz < 5:
             print("Powinieneś naprawić ekwipunek. Narzedzia można znaleść u Kowala.")
@@ -157,7 +161,6 @@ class Bohater:
         else:
             print("W plecaku nie ma skladników na 'potrawke'. Udaj sie na Polowanie.")
 
-
     def odpoczynek(self):
         print("Możesz troche odpocząc, przywróci ci to punkty życia.")
 
@@ -191,7 +194,7 @@ class Bohater:
             print("Szukam złóż: ")
             time.sleep(5)
             ruda = random.choice(rudy_metali)
-            szansa = random.randint(0, 3)
+            szansa = random.randint(0, 4)
             print(szansa, "moja szansa")
             time.sleep(1)
             print("Zanalazłem:", ruda)
@@ -206,8 +209,38 @@ class Bohater:
                 time.sleep(2)
                 self.plecak.append(ruda)
                 self.plecak.append('bryłka złota')
+            elif szansa == 3:
+                print("Wydobyłem: ", ruda)
+                time.sleep(2)
+                print("udało sie jeszcze wydobyć: 'ołów'")
+                self.plecak.append(ruda)
+                self.plecak.append('ołów')
             else:
                 time.sleep(2)
                 print("Nic nie wydobyłem.")
         else:
             print("Nie mam narzedzia do wydobycia. \nNarzedzia możesz znaleść u Kowala.")
+
+
+class Wojownik(Bohater):
+    def __init__(self, imie, specjalnosc, plecak, pkt_ataku, pkt_obrony, pkt_zycia):
+        super().__init__(imie, specjalnosc, plecak, pkt_ataku, pkt_obrony, pkt_zycia)
+        self.plecak = ['bryłka złota', 'kilof']
+        self.stan_pancerz = random.randint(0, 2)
+        self.stan_bron = random.randint(1, 3)
+
+
+class Lotrzyk(Bohater):
+    def __init__(self, imie, specjalnosc, plecak, pkt_ataku, pkt_obrony, pkt_zycia):
+        super().__init__(imie, specjalnosc, plecak, pkt_ataku, pkt_obrony, pkt_zycia)
+        self.plecak = []
+        self.stan_pancerz = random.randint(0, 3)
+        self.stan_bron = random.randint(0, 4)
+
+
+class Driud(Bohater):
+    def __init__(self, imie, specjalnosc, plecak, pkt_ataku, pkt_obrony, pkt_zycia):
+        super().__init__(imie, specjalnosc, plecak, pkt_ataku, pkt_obrony, pkt_zycia)
+        self.plecak = []
+        self.stan_pancerz = random.randint(2, 3)
+        self.stan_bron = random.randint(2, 3)

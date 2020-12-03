@@ -76,24 +76,24 @@ class Alchemik:
             print("Otrzymujesz: ", miksturki[5], ",", miksturki[6])
 
     def transmutacja(self, mojapostac: Bohater.Bohater):
-        print("Otrzymujesz: ołów.")
-        mojapostac.plecak.append("ołów")
-        szansa = [1, 2, 3, 4, 5]
-        moja_szansa = random.choice(szansa)
-        print("Moge zamienić ołów w złoto: ", "szansa: ", moja_szansa, "%")
-        wybor = int(input("Zamienic ołów w złoto ?\n1.Tak \n2.Nie\n: "))
-        if wybor == 1:
-            print("Szansa na przemianę:", moja_szansa, "%")
-            ulepszenie = random.randint(0, 1)
-            if ulepszenie == 1:
-                print("Pomyślne ulepszenie, otrzymujesz 'Bryłka złota' ")
-                mojapostac.plecak.append("bryłka złota")
-            elif ulepszenie == 0:
-                print("Zawiodłem, tracisz 'ołów' ")
-                mojapostac.plecak.remove("ołów")
+        if 'ołow' in mojapostac.plecak:
+            szansa = [1, 2, 3, 4, 5]
+            moja_szansa = random.choice(szansa)
+            print("Moge zamienić ołów w złoto: ", "szansa: ", moja_szansa, "%")
+            wybor = int(input("Zamienic ołów w złoto ?\n1.Tak \n2.Nie\n: "))
+            if wybor == 1:
+                print("Szansa na przemianę:", moja_szansa, "%")
+                ulepszenie = random.randint(0, 1)
+                if ulepszenie == 1:
+                    print("Pomyślne ulepszenie, otrzymujesz 'Bryłka złota' ")
+                    mojapostac.plecak.append("bryłka złota")
+                elif ulepszenie == 0:
+                    print("Zawiodłem, tracisz 'ołów' ")
+                    mojapostac.plecak.remove("ołów")
+            else:
+                print("Nie chciałeś zaryzykować.")
         else:
-            print("Nie chciałeś zaryzykować.")
-
+            print("Nie masz: 'ołowiu' spróbuj wydobyć.")
 
 
 

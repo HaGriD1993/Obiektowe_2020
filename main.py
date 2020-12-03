@@ -9,8 +9,21 @@ if __name__ == "__main__":
     print("Witaj w grze. Na początku podaj imie dla twojego bohatera: ")
 
     imie = input("\nImie bohatera: ")
+    print("\nWybierz klase: ")
+    print("{}| {}| {}| {}| {}|".format("1.", "Wojownik ", "Atak: 10 ", "Obrona: 3 ", "Życie: 90  "))
+    print("{}| {} | {}| {}| {}|".format("2.", "Łotrzyk ", "Atak: 8  ", "Obrona: 5 ", "Życie: 95  "))
+    print("{}| {}   | {}| {}| {}|".format("3.", "Druid ", "Atak: 9  ", "Obrona: 4 ", "Życie: 100 "))
+    x = int(input("\nWybierz klase bohatera: "))
+    if x == 1:
+        postac = Bohater.Wojownik(imie, "Wojownik", [], 10, 3, 90)
+    elif x == 2:
+        postac = Bohater.Lotrzyk(imie, "Łotrzyk", [], 8, 5, 95)
+    elif x == 3:
+        postac = Bohater.Driud(imie, "Druid", [], 9, 4, 100)
+
+
     print("\n'bryłka złota'- możesz ja zdobyc na wyprawach oraz podaczas kopania złóż metali.")
-    postac = Bohater.Bohater(imie)
+
     kowal = Kowal.Kowal()
     alchemik = Alchemik.Alchemik()
     mob = Przeciwnik.Przeciwnik()
@@ -84,6 +97,7 @@ if __name__ == "__main__":
                 alchemik.transmutacja(postac)
                 continue
 
+        #Walka z Lilith
         if wybor_1 == 4:
             mob.info()
             mob.walka(postac)
